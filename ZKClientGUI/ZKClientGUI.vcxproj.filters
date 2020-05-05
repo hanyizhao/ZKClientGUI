@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{7cbe61d8-4296-4378-9ac4-0feae66af6d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{832f3fae-b5b3-480d-9ca8-6e265f161c5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{8cddcbe1-c359-48c3-8bab-b0c26bf3547d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditConnectionsModel.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ZKNodeTreeModel.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ZKNodeTreeItem.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="ZKClientGUI.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="ZKDataViewWidget.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="ZKConnectionWorker.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="EditValueDialog.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateChildNodeDialog.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="DeleteNodeDialog.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="EditConnectionsModel.h">
+      <Filter>Model</Filter>
+    </QtMoc>
+    <QtMoc Include="ZKNodeTreeModel.h">
+      <Filter>Model</Filter>
+    </QtMoc>
+    <QtMoc Include="ZKClientGUI.h">
+      <Filter>View</Filter>
+    </QtMoc>
+    <QtMoc Include="ZKDataViewWidget.h">
+      <Filter>View</Filter>
+    </QtMoc>
+    <QtMoc Include="ZKConnectionWorker.h">
+      <Filter>Common</Filter>
+    </QtMoc>
+    <QtMoc Include="EditValueDialog.h">
+      <Filter>View</Filter>
+    </QtMoc>
+    <QtMoc Include="CreateChildNodeDialog.h">
+      <Filter>View</Filter>
+    </QtMoc>
+    <QtMoc Include="DeleteNodeDialog.h">
+      <Filter>View</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ZKClientGUI.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ZKDataViewWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="EditValueDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="CreateChildNodeDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="DeleteNodeDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="ZKClientGUI.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ZKConnection.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="ZKNodeTreeItem.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
