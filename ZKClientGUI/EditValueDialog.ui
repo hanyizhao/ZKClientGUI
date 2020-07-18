@@ -43,7 +43,7 @@
       </font>
      </property>
      <property name="text">
-      <string>CheckBox</string>
+      <string/>
      </property>
      <property name="checked">
       <bool>true</bool>

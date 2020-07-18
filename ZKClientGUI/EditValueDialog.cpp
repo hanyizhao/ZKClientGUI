@@ -1,9 +1,13 @@
 #include "EditValueDialog.h"
+#include <QStyle>
 
 EditValueDialog::EditValueDialog(QWidget* parent, ZKConnectionWorker* pWorker)
     : QDialog(parent), m_pWorker(pWorker)
 {
     ui.setupUi(this);
+
+	// icon
+	this->setWindowIcon(style()->standardIcon(QStyle::SP_FileDialogContentsView));
 
     connect(pWorker, &ZKConnectionWorker::AfterSetValue, this, &EditValueDialog::OnZKReturnSetValueResult);
 

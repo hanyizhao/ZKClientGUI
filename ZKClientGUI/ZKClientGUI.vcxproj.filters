@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
       <Extensions>qrc;*</Extensions>
@@ -23,14 +19,19 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Model">
+    <Filter Include="Source Files\View">
+      <UniqueIdentifier>{8cddcbe1-c359-48c3-8bab-b0c26bf3547d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model">
       <UniqueIdentifier>{7cbe61d8-4296-4378-9ac4-0feae66af6d5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Common">
+    <Filter Include="Source Files\Common">
       <UniqueIdentifier>{832f3fae-b5b3-480d-9ca8-6e265f161c5a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="View">
-      <UniqueIdentifier>{8cddcbe1-c359-48c3-8bab-b0c26bf3547d}</UniqueIdentifier>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -38,57 +39,60 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EditConnectionsModel.cpp">
-      <Filter>Model</Filter>
+      <Filter>Source Files\Model</Filter>
     </ClCompile>
     <ClCompile Include="ZKNodeTreeModel.cpp">
-      <Filter>Model</Filter>
+      <Filter>Source Files\Model</Filter>
     </ClCompile>
     <ClCompile Include="ZKNodeTreeItem.cpp">
-      <Filter>Common</Filter>
+      <Filter>Source Files\Common</Filter>
     </ClCompile>
     <ClCompile Include="ZKClientGUI.cpp">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
     </ClCompile>
     <ClCompile Include="ZKDataViewWidget.cpp">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
     </ClCompile>
     <ClCompile Include="ZKConnectionWorker.cpp">
-      <Filter>Common</Filter>
+      <Filter>Source Files\Common</Filter>
     </ClCompile>
     <ClCompile Include="EditValueDialog.cpp">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
     </ClCompile>
     <ClCompile Include="CreateChildNodeDialog.cpp">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
     </ClCompile>
     <ClCompile Include="DeleteNodeDialog.cpp">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Language.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EditConnectionsModel.h">
-      <Filter>Model</Filter>
+      <Filter>Source Files\Model</Filter>
     </QtMoc>
     <QtMoc Include="ZKNodeTreeModel.h">
-      <Filter>Model</Filter>
+      <Filter>Source Files\Model</Filter>
     </QtMoc>
     <QtMoc Include="ZKClientGUI.h">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
     </QtMoc>
     <QtMoc Include="ZKDataViewWidget.h">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
     </QtMoc>
     <QtMoc Include="ZKConnectionWorker.h">
-      <Filter>Common</Filter>
+      <Filter>Source Files\Common</Filter>
     </QtMoc>
     <QtMoc Include="EditValueDialog.h">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
     </QtMoc>
     <QtMoc Include="CreateChildNodeDialog.h">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
     </QtMoc>
     <QtMoc Include="DeleteNodeDialog.h">
-      <Filter>View</Filter>
+      <Filter>Source Files\View</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -115,10 +119,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ZKConnection.h">
-      <Filter>Common</Filter>
+      <Filter>Source Files\Common</Filter>
     </ClInclude>
     <ClInclude Include="ZKNodeTreeItem.h">
-      <Filter>Common</Filter>
+      <Filter>Source Files\Common</Filter>
     </ClInclude>
+    <ClInclude Include="Language.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="zkclientgui_zh-cn.ts">
+      <Filter>Translation Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

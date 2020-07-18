@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="ZKClientGUI">
+    <qresource prefix="/ZKClientGUI"/>
+    <qresource prefix="/translation">
+        <file>zkclientgui_zh-cn.qm</file>
     </qresource>
 </RCC>

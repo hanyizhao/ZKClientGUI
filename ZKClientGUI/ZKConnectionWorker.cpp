@@ -35,7 +35,7 @@ void ZKConnectionStateCallback(zhandle_t* zh, int type,
         emit pWorker->ZKConnectionStateChanged(state);
 
 
-        qDebug() << "State: " << state << " " << QThread::currentThreadId();
+        qDebug() << "ZKConnectionStateCallback State: " << QString::fromStdString(ZKState2String(state)) << " " << QThread::currentThreadId();
 
         if (state == ZOO_CONNECTED_STATE)
         {
@@ -172,9 +172,11 @@ void ZKConnectionWorker::TrySetValue(const QString& strPath, const QString& strV
 
     m_xStat = { 0 };
 
-    emit BeforeCallingZKFunction("zoo_set2");
+    const QString strFunction = "zoo_set2(" + strPath + ")";
+
+    emit BeforeCallingZKFunction(strFunction);
     const int nSetResult = zoo_set2(m_pHandler, strPath.toStdString().c_str(), stringValue.c_str(), stringValue.length(), nVersion, &m_xStat);
-    emit AfterCallingZKFunction("zoo_set2");
+    emit AfterCallingZKFunction(strFunction);
     if (nSetResult == ZOK)
     {
         strResult.clear();
@@ -208,10 +210,12 @@ void ZKConnectionWorker::TryCreateNode(const std::string& strPath, const QVarian
     std::string strRealPath;
 
     m_xStat = { 0 };
-    emit BeforeCallingZKFunction("zoo_create2");
+
+    const QString strFunction = "zoo_create2(" + QString::fromStdString(strPath) + ")";
+    emit BeforeCallingZKFunction(strFunction);
     const auto nCreateResult = zoo_create2(m_pHandler, strPath.c_str(), strValue.isValid() ? stringValue.c_str() : nullptr, strValue.isValid() ? stringValue.length() : -1,
                                            &ZOO_OPEN_ACL_UNSAFE, nCreateMode, m_pBuf, m_nBufLen, &m_xStat);
-    emit AfterCallingZKFunction("zoo_create2");
+    emit AfterCallingZKFunction(strFunction);
     if (nCreateResult == ZOK)
     {
         strResult.clear();
@@ -270,7 +274,9 @@ void ZKConnectionWorker::CheckAndInitConnection()
     }
     else
     {
-        emit ZKConnectionStateChanged(zoo_state(m_pHandler));
+        const auto nState = zoo_state(m_pHandler);
+        qDebug() << "CheckAndInitConnection" << QString::fromStdString(ZKState2String(nState));
+        emit ZKConnectionStateChanged(nState);
     }
 
 }
@@ -325,9 +331,10 @@ void ZKConnectionWorker::DoGetValue(ZKNodeTreeItem* pTreeItem, bool& bRetry)
     m_nReturnBufLen = m_nBufLen;
     m_xStat = { 0 };
 
-    emit BeforeCallingZKFunction("zoo_get");
+    const QString strGetFunction = "zoo_get(" + QString::fromStdString(pTreeItem->GetFullPath()) + ")";
+    emit BeforeCallingZKFunction(strGetFunction);
     const auto nGetResult = zoo_get(m_pHandler, pTreeItem->GetFullPath().c_str(), 0, m_pBuf, &m_nReturnBufLen, &m_xStat);
-    emit AfterCallingZKFunction("zoo_get");
+    emit AfterCallingZKFunction(strGetFunction);
 
     if (nGetResult == ZOK)
     {
@@ -371,9 +378,10 @@ void ZKConnectionWorker::DoGetValue(ZKNodeTreeItem* pTreeItem, bool& bRetry)
 
     String_vector xStringVector = { 0 };
 
-    emit BeforeCallingZKFunction("zoo_get_children");
+    const QString strGetChildrenFunction = "zoo_get_children(" + QString::fromStdString(pTreeItem->GetFullPath()) + ")";
+    emit BeforeCallingZKFunction(strGetChildrenFunction);
     const auto nChildResult = zoo_get_children(m_pHandler, pTreeItem->GetFullPath().c_str(), 0, &xStringVector);
-    emit AfterCallingZKFunction("zoo_get_children");
+    emit AfterCallingZKFunction(strGetChildrenFunction);
     if (nChildResult == ZOK)
     {
         for (int i = 0; i < xStringVector.count; i++)
@@ -424,9 +432,10 @@ QString ZKConnectionWorker::DoDeleteNode(const std::string& strPath, bool bRecur
             m_nReturnBufLen = m_nBufLen;
             m_xStat = { 0 };
 
-            emit BeforeCallingZKFunction("zoo_get");
+            const QString strFunction = "zoo_get(" + QString::fromStdString(strPath) + ")";
+            emit BeforeCallingZKFunction(strFunction);
             const auto nGetResult = zoo_get(m_pHandler, strPath.c_str(), 0, m_pBuf, &m_nReturnBufLen, &m_xStat);
-            emit AfterCallingZKFunction("zoo_get");
+            emit AfterCallingZKFunction(strFunction);
             if (nGetResult == ZOK)
             {
                 if (m_xStat.version != nVersion)
@@ -443,9 +452,10 @@ QString ZKConnectionWorker::DoDeleteNode(const std::string& strPath, bool bRecur
         // 获取子节点
         String_vector xStringVector = { 0 };
 
-        emit BeforeCallingZKFunction("zoo_get_children");
+        const QString strFunction = "zoo_get_children(" + QString::fromStdString(strPath) + ")";
+        emit BeforeCallingZKFunction(strFunction);
         const auto nChildResult = zoo_get_children(m_pHandler, strPath.c_str(), 0, &xStringVector);
-        emit AfterCallingZKFunction("zoo_get_children");
+        emit AfterCallingZKFunction(strFunction);
         if (nChildResult == ZOK)
         {
             QString strDeleteChildResult;
@@ -488,9 +498,10 @@ QString ZKConnectionWorker::DoDeleteNode(const std::string& strPath, bool bRecur
     }
 
     // 删除当前节点
-    emit BeforeCallingZKFunction("zoo_delete");
+    const QString strFunction = "zoo_delete(" + QString::fromStdString(strPath) + ")";
+    emit BeforeCallingZKFunction(strFunction);
     const auto nDeleteResult = zoo_delete(m_pHandler, strPath.c_str(), nVersion);
-    emit AfterCallingZKFunction("zoo_delete");
+    emit AfterCallingZKFunction(strFunction);
 
     if (nDeleteResult == ZOK || nDeleteResult == ZNONODE)
     {

@@ -8,9 +8,11 @@
 constexpr auto strTimeFormat = "yyyy-MM-dd HH:mm:ss.zzz";
 
 ZKDataViewWidget::ZKDataViewWidget(QWidget* parent, const ZKConnection& xCon)
-    : QWidget(parent), m_pTreeModel(new ZKNodeTreeModel(this))
+    : QWidget(parent)
 {
     ui.setupUi(this);
+
+    m_pTreeModel = new ZKNodeTreeModel(this, style()->standardIcon(QStyle::SP_DialogOpenButton), style()->standardIcon(QStyle::SP_FileIcon));
 
     //ui.splitter->setStretchFactor(0, 3);
     //ui.splitter->setStretchFactor(1, 7);
@@ -49,6 +51,8 @@ ZKDataViewWidget::ZKDataViewWidget(QWidget* parent, const ZKConnection& xCon)
     connect(ui.treeView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &ZKDataViewWidget::OnTreeViewCurrentChanged);
 
     m_pEditValueDialog = new EditValueDialog(this, m_pZKConnectionWorker);
+    
+    ui.editValueButton->setIcon(style()->standardIcon(QStyle::SP_FileDialogContentsView));
     connect(ui.editValueButton, &QPushButton::clicked, this, &ZKDataViewWidget::OnEditButtonClicked);
 
 
@@ -56,8 +60,8 @@ ZKDataViewWidget::ZKDataViewWidget(QWidget* parent, const ZKConnection& xCon)
     m_pDeleteNodeDialog = new DeleteNodeDialog(this, m_pZKConnectionWorker);
 
     QMenu* pMenu = new QMenu(ui.treeView);
-    pMenu->addAction(tr("Create New Child"), this, &ZKDataViewWidget::OnCreateNewChildItemChoosed);
-    pMenu->addAction(tr("Delete This Node"), this, &ZKDataViewWidget::OnDeleteNodeItemChoosed);
+    pMenu->addAction(style()->standardIcon(QStyle::SP_FileDialogNewFolder), tr("Create New Child"), this, &ZKDataViewWidget::OnCreateNewChildItemChoosed);
+    pMenu->addAction(style()->standardIcon(QStyle::SP_TrashIcon), tr("Delete This Node"), this, &ZKDataViewWidget::OnDeleteNodeItemChoosed);
     connect(ui.treeView, &QWidget::customContextMenuRequested, [ = ]()->void
     {
         pMenu->exec(QCursor::pos());
@@ -73,12 +77,14 @@ ZKDataViewWidget::~ZKDataViewWidget()
 
 void ZKDataViewWidget::OnBeforeCallingZKFunction(const QString& strFunc)
 {
-    ui.functionLabel->setText(strFunc);
+	ui.functionLabel->setText(tr("Calling function: ") + strFunc);
+	ui.functionLabel->setStyleSheet("color:red;");
 }
 
 void ZKDataViewWidget::OnAfterCallingZKFunction(const QString& strFunc)
 {
-    ui.functionLabel->setText(tr("Done"));
+    ui.functionLabel->setText(tr("Finish the function call: ") + strFunc);
+    ui.functionLabel->setStyleSheet("color:green;");
 }
 
 void ZKDataViewWidget::OnTreeViewCurrentChanged(const QModelIndex& xCurrentIndex, const QModelIndex& xPreviousIndex)
@@ -149,12 +155,12 @@ void ZKDataViewWidget::DoZKStateChanged(int nZKState)
     if (nZKState == ZOO_CONNECTED_STATE)
     {
         ui.circlelabel->setStyleSheet("color:green;");
-        ui.connectionStatelabel->setText(tr("Connected"));
+        ui.connectionStatelabel->setText(tr("Connected to ZooKeeper server."));
     }
     else if (nZKState == ZOO_EXPIRED_SESSION_STATE || nZKState == ZOO_AUTH_FAILED_STATE)
     {
         ui.circlelabel->setStyleSheet("color:red;");
-        ui.connectionStatelabel->setText(tr("Error"));
+        ui.connectionStatelabel->setText(tr("Error when connecting to ZooKeeper server."));
     }
     else
     {

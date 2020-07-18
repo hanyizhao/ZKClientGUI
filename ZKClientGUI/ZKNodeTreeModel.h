@@ -1,14 +1,16 @@
 #pragma once
 
 #include <QAbstractItemModel>
+#include <memory>
 #include "ZKNodeTreeItem.h"
+#include <QIcon>
 
 class ZKNodeTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
 
 public:
-    ZKNodeTreeModel(QObject* parent);
+    ZKNodeTreeModel(QObject* parent, const QIcon& xDirIcon, const QIcon& xFileIcon);
     ~ZKNodeTreeModel();
 
     Q_INVOKABLE QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const override;
@@ -31,5 +33,9 @@ private:
     ZKNodeTreeItem* DoFindTreeItem(ZKNodeTreeItem* pNowItem, const std::string& strLeftPath, bool bCreateNew);
 
     void DoUpdateSubTreeSubValue(ZKNodeTreeItem* pTreeItem, ZKNodeTreeItem* pNewValue);
+
+private:
+    QIcon m_xDirIcon;
+    QIcon m_xFileIcon;
 
 };

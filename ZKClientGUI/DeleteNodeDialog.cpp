@@ -1,9 +1,13 @@
 #include "DeleteNodeDialog.h"
+#include <QStyle>
 
 DeleteNodeDialog::DeleteNodeDialog(QWidget* parent, ZKConnectionWorker* pWorker)
     : QDialog(parent), m_pWorker(pWorker)
 {
     ui.setupUi(this);
+
+	// icon
+	this->setWindowIcon(style()->standardIcon(QStyle::SP_TrashIcon));
 
     connect(m_pWorker, &ZKConnectionWorker::AfterDeleteNode, this, &DeleteNodeDialog::OnZKReturnDeleteNodeResult);
     connect(ui.cancelButton, &QPushButton::clicked, [&](bool)

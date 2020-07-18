@@ -3,11 +3,22 @@
 #include <QDebug>
 #include <QMessageBox>
 #include "ZKDataViewWidget.h"
+#include "Language.h"
 
-ZKClientGUI::ZKClientGUI(QWidget* parent)
+ZKClientGUI::ZKClientGUI(QWidget* parent, const int nLanguageIndex)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
+
+    if (nLanguageIndex >= 0)
+    {
+        ui.languageComboBox->setCurrentIndex(nLanguageIndex);
+        m_nNowLanguageIndex = nLanguageIndex;
+    }
+    
+    ui.languageRestartLabel->setVisible(false);
+
+    connect(ui.languageComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(OnLanguageChanged(int)));
 
     m_pConnectionsModel = new EditConnectionsModel(parent);
 
@@ -57,6 +68,14 @@ ZKClientGUI::ZKClientGUI(QWidget* parent)
 
     // 因为第一个页签不需要关闭按钮，因此手动去除
     ui.tabWidget->tabBar()->setTabButton(ui.tabWidget->indexOf(ui.hostsTab), QTabBar::RightSide, nullptr);
+
+    ui.tableView->horizontalHeader()->setStretchLastSection(true);
+}
+
+void ZKClientGUI::OnLanguageChanged(int nIndex)
+{
+    Language::SaveLanguageToFile(nIndex);
+	ui.languageRestartLabel->setVisible(m_nNowLanguageIndex != nIndex);
 }
 
 void ZKClientGUI::OnConnectButtonClicked(bool)

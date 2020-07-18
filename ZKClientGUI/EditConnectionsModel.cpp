@@ -252,7 +252,7 @@ void EditConnectionsModel::InitConnectionsFromLocalConfig()
 
     if (!xJsonFile.open(QIODevice::ReadOnly))
     {
-        QMessageBox::information(nullptr, tr("Info"), tr("Can not find configuration file in Path: ") + GetConnectionConfigFilePath());
+        //QMessageBox::information(nullptr, tr("Info"), tr("Can not find configuration file in Path: ") + GetConnectionConfigFilePath());
         return;
     }
 

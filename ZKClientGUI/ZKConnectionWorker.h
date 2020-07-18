@@ -93,6 +93,6 @@ private:
 
     char* const m_pBuf; // 查询时使用的Buf，因为单线程读写，因此可以共用一个
     const int m_nBufLen; // Buf长度
-    int m_nReturnBufLen;
-    Stat m_xStat;
+    int m_nReturnBufLen = 0;
+    Stat m_xStat = {0};
 };

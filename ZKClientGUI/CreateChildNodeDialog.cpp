@@ -6,6 +6,9 @@ CreateChildNodeDialog::CreateChildNodeDialog(QWidget* parent, ZKConnectionWorker
 {
     ui.setupUi(this);
 
+    // icon
+    this->setWindowIcon(style()->standardIcon(QStyle::SP_FileDialogNewFolder));
+
     connect(pWorker, &ZKConnectionWorker::AfterCreateNode, this, &CreateChildNodeDialog::OnZKReturnCreateNodeResult);
 
     connect(ui.createButton, &QPushButton::clicked, this, &CreateChildNodeDialog::OnCreateButtonClicked);

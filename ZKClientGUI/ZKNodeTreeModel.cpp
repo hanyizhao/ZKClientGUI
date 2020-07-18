@@ -2,8 +2,9 @@
 #include <unordered_set>
 #include <QDebug>
 
-ZKNodeTreeModel::ZKNodeTreeModel(QObject* parent)
-    : QAbstractItemModel(parent), m_xRootItem(nullptr, "", "", QVariant(), -1)
+ZKNodeTreeModel::ZKNodeTreeModel(QObject* parent, const QIcon& xDirIcon, const QIcon& xFileIcon)
+    : QAbstractItemModel(parent), m_xRootItem(nullptr, "", "", QVariant(), -1),
+    m_xDirIcon(xDirIcon), m_xFileIcon(xFileIcon)
 {
     auto pChild = m_xRootItem.AddChild("", QVariant());
 
@@ -99,12 +100,24 @@ Q_INVOKABLE QVariant ZKNodeTreeModel::data(const QModelIndex& index, int role /*
     if (!index.isValid())
         return QVariant();
 
-    if (role != Qt::DisplayRole)
+	auto* pNowItem = static_cast<ZKNodeTreeItem*>(index.internalPointer());
+
+    // Check nullptr
+    if (pNowItem == nullptr)
+    {
         return QVariant();
+    }
 
-    auto* pNowItem = static_cast<ZKNodeTreeItem*>(index.internalPointer());
+    if (role == Qt::DisplayRole)
+	{
+		return pNowItem->data(index.column());
+    }
+    else if (role == Qt::DecorationRole)
+    {
+        return pNowItem->GetChildCount() > 0 ? m_xDirIcon: m_xFileIcon;
+    }
 
-    return pNowItem->data(index.column());
+    return QVariant();
 }
 
 void ZKNodeTreeModel::OnUpdateSubTreeSubValue(std::shared_ptr<ZKNodeTreeItem> pTreeItem)
