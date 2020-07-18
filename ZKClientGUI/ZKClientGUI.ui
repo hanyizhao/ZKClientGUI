@@ -160,7 +160,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Need restart this application.</string>
+             <string>Need to restart this application.</string>
             </property>
            </widget>
           </item>

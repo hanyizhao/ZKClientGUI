@@ -136,14 +136,12 @@
         <translation>地址（IP:Port）</translation>
     </message>
     <message>
-        <location filename="EditConnectionsModel.cpp" line="255"/>
         <source>Info</source>
-        <translation>信息</translation>
+        <translation type="vanished">信息</translation>
     </message>
     <message>
-        <location filename="EditConnectionsModel.cpp" line="255"/>
         <source>Can not find configuration file in Path: </source>
-        <translation>找不到配置文件：</translation>
+        <translation type="vanished">找不到配置文件：</translation>
     </message>
     <message>
         <location filename="EditConnectionsModel.cpp" line="266"/>
@@ -234,32 +232,32 @@
 <context>
     <name>ZKClientGUI</name>
     <message>
-        <location filename="ZKClientGUI.cpp" line="28"/>
+        <location filename="ZKClientGUI.cpp" line="29"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.cpp" line="30"/>
+        <location filename="ZKClientGUI.cpp" line="31"/>
         <source>Delete selected items</source>
         <translation>删除选中的连接信息</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.cpp" line="87"/>
+        <location filename="ZKClientGUI.cpp" line="88"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.cpp" line="87"/>
+        <location filename="ZKClientGUI.cpp" line="88"/>
         <source>Please edit connection detail and choose one connection firstly.</source>
         <translation>请先编辑一条连接信息并选中。</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.cpp" line="95"/>
+        <location filename="ZKClientGUI.cpp" line="96"/>
         <source>Warn</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.cpp" line="95"/>
+        <location filename="ZKClientGUI.cpp" line="96"/>
         <source>Failed to get zookeeper connection configuration.</source>
         <translation>获取zookeeper连接配置失败</translation>
     </message>
@@ -282,34 +280,38 @@
         <translation>编辑连接信息：</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.ui" line="96"/>
+        <location filename="ZKClientGUI.ui" line="123"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.ui" line="111"/>
+        <location filename="ZKClientGUI.ui" line="163"/>
+        <source>Need to restart this application.</source>
+        <translation>需要重启应用</translation>
+    </message>
+    <message>
+        <location filename="ZKClientGUI.ui" line="87"/>
         <source>Tips:</source>
         <translation>说明：</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.ui" line="118"/>
+        <location filename="ZKClientGUI.ui" line="94"/>
         <source>1. Edit information of a zookeeper server.</source>
         <translation>1. 在上面的表格中填写ZooKeeper服务器的地址</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.ui" line="125"/>
+        <location filename="ZKClientGUI.ui" line="101"/>
         <source>2. Press &apos;Connect&apos; button.</source>
         <translation>2. 按‘连接’按钮</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.ui" line="134"/>
+        <location filename="ZKClientGUI.ui" line="137"/>
         <source>Language:</source>
         <translation>语言：</translation>
     </message>
     <message>
-        <location filename="ZKClientGUI.ui" line="160"/>
         <source>Need restart this application.</source>
-        <translation>需要重启应用</translation>
+        <translation type="vanished">需要重启应用</translation>
     </message>
 </context>
 <context>
@@ -460,17 +462,17 @@
         <translation>节点完整路径：</translation>
     </message>
     <message>
-        <location filename="ZKDataViewWidget.ui" line="302"/>
+        <location filename="ZKDataViewWidget.ui" line="298"/>
         <source>Edit Node Data</source>
         <translation>编辑节点值</translation>
     </message>
     <message>
-        <location filename="ZKDataViewWidget.ui" line="309"/>
+        <location filename="ZKDataViewWidget.ui" line="305"/>
         <source>[null]</source>
         <translation>[空数据（NULL）]</translation>
     </message>
     <message>
-        <location filename="ZKDataViewWidget.ui" line="349"/>
+        <location filename="ZKDataViewWidget.ui" line="345"/>
         <source>Done</source>
         <translation>操作完成</translation>
     </message>
