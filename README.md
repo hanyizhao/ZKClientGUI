@@ -5,6 +5,7 @@ This is a Zookeeper GUI client using Qt.
 1. Use zookeeper client c library. https://zookeeper.apache.org/
 2. Tested in zookeeper server version: 3.5.6, 3.6.0.
 3. Support English and Chinese.
+4. ACL is not supported.
 
 ## Download
 Only for windows: 

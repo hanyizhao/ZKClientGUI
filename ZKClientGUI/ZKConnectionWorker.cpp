@@ -355,14 +355,14 @@ void ZKConnectionWorker::DoGetValue(ZKNodeTreeItem* pTreeItem, bool& bRetry)
         pTreeItem->m_bNoNode = true;
         return;
     }
-    else if (nGetResult == ZBADARGUMENTS)
+    else if(nGetResult == ZINVALIDSTATE)
     {
-        qDebug() << "zoo_get error: " << nGetResult << ". Path: " << pTreeItem->GetFullPath().c_str();
+        bRetry = true;
         return;
     }
     else
     {
-        bRetry = true;
+        qDebug() << "zoo_get error: " << nGetResult << ". Path: " << pTreeItem->GetFullPath().c_str();
         return;
     }
 
@@ -409,14 +409,14 @@ void ZKConnectionWorker::DoGetValue(ZKNodeTreeItem* pTreeItem, bool& bRetry)
     {
         pTreeItem->m_bNoNode = true;
     }
-    else if (nChildResult == ZBADARGUMENTS)
-    {
-        qDebug() << "zoo_get_children error: " << nGetResult << ". Path: " << pTreeItem->GetFullPath().c_str();
-    }
-    else
+    else if(nChildResult == ZINVALIDSTATE)
     {
         bRetry = true;
         return;
+    }
+    else
+    {
+        qDebug() << "zoo_get_children error: " << nGetResult << ". Path: " << pTreeItem->GetFullPath().c_str();
     }
 }
 
